@@ -5,13 +5,16 @@ import { View } from 'app/design/view'
 const { useParam } = createParam<{ id: string }>()
 import { MotiLink } from 'solito/moti'
 import { createParam } from 'solito'
+import MessageComposer from './message-composer'
 
 export function ChatScreen() {
   const [id] = useParam('id')
   return (
-    <View className="flex-1 items-center justify-center p-3">
-      <H1>Chat {id}</H1>
-      <View className="max-w-xl">
+    <View className="flex-1 justify-between bg-green-300 items-stretch">
+      <Row className="bg-red-300">
+        <H1>Chat {id}</H1>
+      </Row>
+      <View className="flex-1 bg-yellow-300">
         <P className="text-center">
           Here is a basic starter to show you how you can navigate from one
           screen to another. This screen uses the same code on Next.js and React
@@ -44,8 +47,7 @@ export function ChatScreen() {
           .
         </P>
       </View>
-      <View className="h-[32px]" />
-      <Row className="space-x-8">
+      <Row className="space-x-8 bg-blue-300">
         <TextLink href="/user/fernando">Regular Link</TextLink>
         <MotiLink
           href="/user/fernando"
@@ -67,6 +69,7 @@ export function ChatScreen() {
           </Text>
         </MotiLink>
       </Row>
+      <MessageComposer onSubmit={text => console.log(text)} />
     </View>
   )
 }
