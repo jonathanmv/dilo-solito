@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { HomeScreen } from '../../features/home/screen'
 import { UserDetailScreen } from '../../features/user/detail-screen'
 import { ChatScreen } from '../../features/chat/chat-screen'
+import { CommunityScreen } from 'app/features/community/community-screen'
 
 const Stack = createNativeStackNavigator<{
   home: undefined
@@ -12,6 +13,9 @@ const Stack = createNativeStackNavigator<{
   chat: {
     id: string
   },
+  community: {
+    id: string
+  }
 }>()
 
 export function NativeNavigation() {
@@ -29,6 +33,13 @@ export function NativeNavigation() {
         component={HomeScreen}
         options={{
           title: 'Home',
+        }}
+      />
+      <Stack.Screen
+        name="community"
+        component={CommunityScreen}
+        options={{
+          title: 'Community',
         }}
       />
       <Stack.Screen
