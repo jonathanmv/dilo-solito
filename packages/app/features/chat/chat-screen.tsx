@@ -1,10 +1,11 @@
-import { H1 } from 'app/design/typography'
+import { H1, TextLink } from 'app/design/typography'
 import { Row } from 'app/design/layout'
 import { View } from 'app/design/view'
 import { GiftedChat } from 'react-native-gifted-chat'
 
 import { createParam } from 'solito'
 import { useCallback, useEffect, useState } from 'react'
+import { useCommunity } from 'app/hooks/useCommunity'
 
 const { useParam } = createParam<{ id: string }>()
 export interface IMessage {
@@ -35,6 +36,8 @@ interface QuickReplies {
 
 export function ChatScreen() {
   const [id] = useParam('id')
+  const { getRoomById } = useCommunity()
+  const room = getRoomById(id)
 
   const [messages, setMessages] = useState<IMessage[]>([]);
 
@@ -63,7 +66,8 @@ export function ChatScreen() {
   return (
     <View className="flex-1 justify-between bg-green-300 items-stretch">
       <Row className="bg-red-300">
-        <H1>Chat {id}</H1>
+        <TextLink href={`/community/${room?.communityId}`}>back</TextLink>
+        <H1>Chat {room?.title}</H1>
       </Row>
       <View className="flex-1 bg-yellow-300">
         <GiftedChat
