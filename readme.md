@@ -1,3 +1,10 @@
+# Jonathan Additions
+
+I just created the app as noted below. Nothing special yet.
+
+## Adding a route
+https://solito.dev/guides/new-route
+
 # Solito + NativeWind Example Monorepo 🕴
 
 ```sh

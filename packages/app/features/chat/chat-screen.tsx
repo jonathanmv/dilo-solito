@@ -2,12 +2,15 @@ import { A, H1, P, Text, TextLink } from 'app/design/typography'
 import { Row } from 'app/design/layout'
 import { View } from 'app/design/view'
 
+const { useParam } = createParam<{ id: string }>()
 import { MotiLink } from 'solito/moti'
+import { createParam } from 'solito'
 
-export function HomeScreen() {
+export function ChatScreen() {
+  const [id] = useParam('id')
   return (
     <View className="flex-1 items-center justify-center p-3">
-      <H1>Welcome to Solito.</H1>
+      <H1>Chat {id}</H1>
       <View className="max-w-xl">
         <P className="text-center">
           Here is a basic starter to show you how you can navigate from one
@@ -43,7 +46,6 @@ export function HomeScreen() {
       </View>
       <View className="h-[32px]" />
       <Row className="space-x-8">
-        <TextLink href="/chat/main">Link to Main Chat</TextLink>
         <TextLink href="/user/fernando">Regular Link</TextLink>
         <MotiLink
           href="/user/fernando"
