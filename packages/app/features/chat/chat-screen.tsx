@@ -1,75 +1,80 @@
-import { A, H1, P, Text, TextLink } from 'app/design/typography'
+import { H1 } from 'app/design/typography'
 import { Row } from 'app/design/layout'
 import { View } from 'app/design/view'
+import { GiftedChat } from 'react-native-gifted-chat'
+
+import { createParam } from 'solito'
+import { useCallback, useEffect, useState } from 'react'
 
 const { useParam } = createParam<{ id: string }>()
-import { MotiLink } from 'solito/moti'
-import { createParam } from 'solito'
-import MessageComposer from './message-composer'
+export interface IMessage {
+  _id: string | number
+  text: string
+  createdAt: Date | number
+  user: {_id: string | number, name?: string, avatar?: string }
+  image?: string
+  video?: string
+  audio?: string
+  system?: boolean
+  sent?: boolean
+  received?: boolean
+  pending?: boolean
+  quickReplies?: QuickReplies
+}
+interface Reply {
+  title: string
+  value: string
+  messageId?: any
+}
+
+interface QuickReplies {
+  type: 'radio' | 'checkbox'
+  values: Reply[]
+  keepIt?: boolean
+}
 
 export function ChatScreen() {
   const [id] = useParam('id')
+
+  const [messages, setMessages] = useState<IMessage[]>([]);
+
+  useEffect(() => {
+    const messages: IMessage[] = []
+    for (let i = 0; i < 20; i++) {
+      const message:IMessage = {
+        _id: i,
+        text: 'This is message ' + ( i + 1),
+        createdAt: new Date(Date.now()-(i*3600000)),
+        user: {
+          _id: 2,
+          name: 'React Native',
+          avatar: 'https://placeimg.com/140/140/any',
+        },
+      }
+      messages.push(message);
+    }
+    setMessages(messages)
+  }, [])
+
+  const onSend = useCallback((messages:IMessage[] = []) => {
+    setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
+  }, [])
+
   return (
     <View className="flex-1 justify-between bg-green-300 items-stretch">
       <Row className="bg-red-300">
         <H1>Chat {id}</H1>
       </Row>
       <View className="flex-1 bg-yellow-300">
-        <P className="text-center">
-          Here is a basic starter to show you how you can navigate from one
-          screen to another. This screen uses the same code on Next.js and React
-          Native.
-        </P>
-        <P className="text-center">
-          Solito is made by{' '}
-          <A
-            href="https://twitter.com/fernandotherojo"
-            hrefAttrs={{
-              target: '_blank',
-              rel: 'noreferrer',
-            }}
-          >
-            Fernando Rojo
-          </A>
-          .
-        </P>
-        <P className="text-center">
-          NativeWind is made by{' '}
-          <A
-            href="https://twitter.com/mark__lawlor"
-            hrefAttrs={{
-              target: '_blank',
-              rel: 'noreferrer',
-            }}
-          >
-            Mark Lawlor
-          </A>
-          .
-        </P>
+        <GiftedChat
+          wrapInSafeArea={false}
+          messages={messages}
+          onSend={messages => onSend(messages)}
+          user={{
+            _id: 1
+          }}
+        />
       </View>
-      <Row className="space-x-8 bg-blue-300">
-        <TextLink href="/user/fernando">Regular Link</TextLink>
-        <MotiLink
-          href="/user/fernando"
-          animate={({ hovered, pressed }) => {
-            'worklet'
-
-            return {
-              scale: pressed ? 0.95 : hovered ? 1.1 : 1,
-              rotateZ: pressed ? '0deg' : hovered ? '-3deg' : '0deg',
-            }
-          }}
-          transition={{
-            type: 'timing',
-            duration: 150,
-          }}
-        >
-          <Text selectable={false} className="text-base font-bold">
-            Moti Link
-          </Text>
-        </MotiLink>
-      </Row>
-      <MessageComposer onSubmit={text => console.log(text)} />
     </View>
   )
 }
