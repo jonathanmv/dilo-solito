@@ -4,6 +4,7 @@ import { HomeScreen } from '../../features/home/screen'
 import { UserDetailScreen } from '../../features/user/detail-screen'
 import { ChatScreen } from '../../features/chat/chat-screen'
 import { CommunityScreen } from 'app/features/community/community-screen'
+import { SignupScreen } from 'app/features/auth/signup-screen'
 
 const Stack = createNativeStackNavigator<{
   home: undefined
@@ -15,7 +16,8 @@ const Stack = createNativeStackNavigator<{
   },
   community: {
     id: string
-  }
+  },
+  signup: undefined
 }>()
 
 export function NativeNavigation() {
@@ -36,6 +38,12 @@ export function NativeNavigation() {
         }}
       />
       <Stack.Screen
+        name="signup"
+        component={SignupScreen}
+        options={{
+          title: 'Signup',
+        }}
+      /><Stack.Screen
         name="community"
         component={CommunityScreen}
         options={{
