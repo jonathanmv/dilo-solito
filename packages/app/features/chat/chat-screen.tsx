@@ -5,16 +5,17 @@ import { GiftedChat } from 'react-native-gifted-chat'
 
 import { createParam } from 'solito'
 import { useCallback } from 'react'
-import { useCommunity } from 'app/hooks/useCommunity'
 import { IMessage, useRoomMessages } from 'app/hooks/useRoomMessages'
+import { useRoom } from 'app/hooks/useRoom'
+import { useUser } from 'app/hooks/useUser'
 
 const { useParam } = createParam<{ id: string }>()
 
 export function ChatScreen() {
   const [id] = useParam('id')
-  const { getRoomById } = useCommunity()
-  const room = getRoomById(id)
+  const room = useRoom(id)
   const [messages, setMessages] = useRoomMessages(id)
+  const { user } = useUser()
 
   const onSend = useCallback((messages: IMessage[] = []) => {
     setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
@@ -31,9 +32,7 @@ export function ChatScreen() {
           wrapInSafeArea={false}
           messages={messages}
           onSend={messages => onSend(messages)}
-          user={{
-            _id: 1
-          }}
+          user={user}
         />
       </View>
     </View>

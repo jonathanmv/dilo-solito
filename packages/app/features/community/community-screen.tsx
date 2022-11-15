@@ -10,9 +10,7 @@ const { useParam } = createParam<{ id: string }>()
 
 export function CommunityScreen() {
   const [id] = useParam('id')
-  const { getCommunityById, getRoomsByCommunityId } = useCommunity();
-  const community = getCommunityById(id);
-  const rooms = getRoomsByCommunityId(id);
+  const { community, rooms } = useCommunity(id);
 
   const renderChatRoomItem = ({ item }) => {
     return (
