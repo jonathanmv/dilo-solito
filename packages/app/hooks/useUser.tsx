@@ -1,9 +1,14 @@
+import { COMMUNITY_MEMBERSHIPS, USERS } from "./data"
+
+export type User = {
+    _id: number,
+    name: string,
+    avatar: string,
+    bio?:string,
+}
 export const useUser = () => {
     return {
-        user: {
-            _id: 1,
-            name: 'jonathanmv',
-            avatar: 'https://placeimg.com/480/480/any'
-        }
+        user: USERS.find(({_id}) => _id === 1),
+        communities: COMMUNITY_MEMBERSHIPS.filter(({userId}) => userId === 1)
     }
 }
