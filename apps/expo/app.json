@@ -1,12 +1,16 @@
 {
   "expo": {
-    "name": "solito-nativewind",
-    "slug": "solito-nativewind",
+    "name": "dilo",
+    "slug": "dilo",
     "version": "1.0.0",
-    "scheme": "solito-nativewind",
+    "scheme": "dilo",
     "platforms": ["ios", "android"],
     "ios": {
-      "bundleIdentifier": "com.solito.nativewind"
+      "bundleIdentifier": "chat.dilo",
+      "googleServicesFile": "./google/GoogleService-Info.plist"
+    },
+    "android": {
+      "googleServicesFile": "./google/google-services.json"
     }
   }
 }
