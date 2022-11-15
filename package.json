@@ -17,5 +17,8 @@
   "scripts": {
     "native": "cd apps/expo && expo start",
     "web": "cd apps/next && yarn next"
+  },
+  "dependencies": {
+    "firebase": "^9.14.0"
   }
 }

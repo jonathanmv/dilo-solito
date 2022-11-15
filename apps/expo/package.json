@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "@react-native-firebase/app": "^16.4.4",
+    "@react-native-firebase/auth": "^16.4.4",
     "app": "*",
     "expo": "^46.0.0",
     "expo-linking": "~3.2.2",
