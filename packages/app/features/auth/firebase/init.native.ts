@@ -24,7 +24,7 @@ const sendSignInLinkToEmail: Firebase['sendSignInLinkToEmail'] = async (email: s
       installApp: true,
       minimumVersion: '12',
     },
-    dynamicLinkDomain: 'chat.dilo',
+    dynamicLinkDomain: 'dilodev.page.link',
   }
   return (await auth().sendSignInLinkToEmail(email, actionCodeSettings))
 }
