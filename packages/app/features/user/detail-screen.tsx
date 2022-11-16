@@ -12,7 +12,8 @@ import { useAuth } from '../auth/context'
 const { useParam } = createParam<{ id: string }>()
 
 export function UserDetailScreen() {
-  const [_] = useParam('id')
+  const [id] = useParam('id')
+  console.log('user detail screen', id);
   const auth = useAuth();
   const { user, communities } = useUser();
   const renderCommunityItem = ({ item }) => {

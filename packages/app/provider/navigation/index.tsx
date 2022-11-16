@@ -18,7 +18,9 @@ export function NavigationProvider({
               home: '',
               'user-detail': 'user/:id',
               'chat': 'chat/:id',
-              'signup': 'auth/signup'
+              'chat-room': 'chat-room/:roomId',
+              'signup': 'auth/signup',
+              'community': 'community/:id',
             },
           },
         }),
