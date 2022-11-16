@@ -10,12 +10,13 @@ const { useParam } = createParam<{ id: string }>()
 
 export function CommunityScreen() {
   const [id] = useParam('id')
+  console.log('community screen', id);
   const { community, rooms } = useCommunity(id);
-
+  console.log(community, rooms);
   const renderChatRoomItem = ({ item }) => {
     return (
         <Row>
-            <TextLink href={`/chat/${item.id}`}>{item.title}</TextLink>
+            <TextLink href={`/chat/${item.id}`}>{item.title} {`/chat/${item.id}`}</TextLink>
         </Row>
     )
   }

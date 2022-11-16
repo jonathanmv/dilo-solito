@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "741989785052",
+    "firebase_url": "https://dilo-dev.firebaseio.com",
+    "project_id": "dilo-dev",
+    "storage_bucket": "dilo-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:741989785052:android:6e84f36136baf4fdb18319",
+        "android_client_info": {
+          "package_name": "chat.dilo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "741989785052-eabnnaouttugshapv3lvge5f6nsgr9rr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "chat.dilo",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "741989785052-3havngkigobgdkvh6uienm686l8qi0uu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrAiFkTlZCOuMsj0PwLZUx7N9Mda1862s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "741989785052-3havngkigobgdkvh6uienm686l8qi0uu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "741989785052-qk9g7ccpata13o31fj8fdnoguvf9t1v8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "chat.dilo"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
