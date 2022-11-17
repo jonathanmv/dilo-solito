@@ -6,6 +6,8 @@ type User = Pick<firebase.User, 'uid'>
 export type Firebase = {
   getIsSignedIn: () => boolean
   signInAnonymously: () => Promise<User>
+  signInWithEmailLink: (email: string, emailLink: string) => Promise<User>
+  sendSignInLinkToEmail: (email: string) => Promise<void>
   signOut: () => Promise<void>
   onAuthStateChanged: (
     callback: (user: { uid: string } | null) => void

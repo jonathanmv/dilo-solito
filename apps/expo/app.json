@@ -11,6 +11,7 @@
     },
     "android": {
       "googleServicesFile": "./google/google-services.json"
-    }
+    },
+    "plugins": ["@react-native-firebase/app"]
   }
 }

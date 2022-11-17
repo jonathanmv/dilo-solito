@@ -7,23 +7,26 @@ export function NavigationProvider({
 }: {
   children: React.ReactNode
 }) {
+  console.log("navigation provider");
   return (
     <NavigationContainer
       linking={useMemo(
-        () => ({
+        () => {
+          console.log('memoized navigation container')
+          return ({
           prefixes: [Linking.createURL('/')],
           config: {
-            initialRouteName: 'home',
+            initialRouteName: 'signup',
             screens: {
               home: '',
               'user-detail': 'user/:id',
               'chat': 'chat/:id',
-              'chat-room': 'chat-room/:roomId',
               'signup': 'auth/signup',
+              'finish-signup': 'auth/finish-signup',
               'community': 'community/:id',
             },
           },
-        }),
+        })},
         []
       )}
     >
