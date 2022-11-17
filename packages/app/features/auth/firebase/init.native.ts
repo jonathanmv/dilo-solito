@@ -13,7 +13,7 @@ const signInAnonymously: Firebase['signInAnonymously'] = async () => {
 const sendSignInLinkToEmail: Firebase['sendSignInLinkToEmail'] = async (email: string) => {
   const actionCodeSettings = {
     // URL must be in the authorized domains list in the Firebase Console.
-    url: 'http://localhost:3000/auth/finishSignUp',
+    url: 'http://localhost:3000/auth/finish-signup',
     // This must be true.
     handleCodeInApp: true,
     iOS: {
@@ -29,6 +29,10 @@ const sendSignInLinkToEmail: Firebase['sendSignInLinkToEmail'] = async (email: s
   return (await auth().sendSignInLinkToEmail(email, actionCodeSettings))
 }
 
+const signInWithEmailLink: Firebase['signInWithEmailLink'] = async (email: string, emailLink: string) => {
+  return (await auth().signInWithEmailLink(email, emailLink)).user;
+}
+
 const onAuthStateChanged: Firebase['onAuthStateChanged'] = (callback) => {
   return auth().onAuthStateChanged(callback)
 }
@@ -40,6 +44,7 @@ export {
   getIsSignedIn,
   signOut,
   signInAnonymously,
+  signInWithEmailLink,
   sendSignInLinkToEmail,
   onAuthStateChanged,
   getCurrentUser,

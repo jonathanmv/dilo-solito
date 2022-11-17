@@ -7,13 +7,11 @@ import { useAuth } from './context'
 import { Row } from 'app/design/layout'
 import { useEffect, useState } from 'react'
 import { getSignupLinkEmail, setSignupLinkEmail, deleteSignupLinkEmail } from './storage'
-import { Platform } from 'react-native'
 
 export function SignupScreen() {
   const auth = useAuth();
   const [email, setEmail] = useState('')
   const [destinationEmail, setDestinationEmail] = useState<string | null>(null);
-  console.log('render', destinationEmail, Platform.OS === "web" && typeof window === "undefined");
   const emailSignUp = () => {
     if (email.length) {
       sendSignInLinkToEmail(email)
